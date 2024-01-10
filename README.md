@@ -1,3 +1,22 @@
+@Amuse, 
+
+note: this is all pretty hacky, eventually we want to be back on the main martin image, once it has fixes our database_url issue
+We are leveraging our repo with our customized martin server to create our docker images.
+We have added binaries(unix) and apple binaries which contain the binaries built by our github actions.
+We have a new amuse.Dockerfile, which we use to build our custom docker image.
+This is all in the github->files folder, because like i said...hacky.
+
+You then need to tag and upload that image to the our DO docker repo using 
+  docker tag martin_amuse_prod registry.digitalocean.com/amuse/image_name
+  docker push registry.digitalocean.com/amuse/image_name
+our image names are martin_amuse for dev and martin_amuse_prod for prod
+
+if we need a newer version of martin we need to upgrade our fork, make sure the fixes we already put in are still applied, build new binaries using github actions, and then replace our existing binaries with those new ones.
+Alternatively we just add our stuff to the open source repo. There is an existing ticket for it.
+
+  
+
+
 [![Martin](https://raw.githubusercontent.com/maplibre/martin/main/logo.png)](https://maplibre.org/martin/)
 
 [![Book](https://img.shields.io/badge/docs-Book-informational)](https://maplibre.org/martin)
